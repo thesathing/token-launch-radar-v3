@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Launch Radar — Early finds first, checked twice out-of-sample, every farm plan costed</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span> LAUNCH RADAR <em>— early finds first, checked twice out-of-sample, every farm plan costed</em></div>
+  <div class="meta" id="topMeta">Sealed snapshot · no network · no hand-picked names</div>
+</header>
+
+<main id="app">
+  <section class="hero">
+    <div class="hero-left">
+      <div class="kicker">SEALED DEFILLAMA SNAPSHOT · <span id="asOf">2026-11-14</span> · FLOOR $50.0M</div>
+      <h1>Early finds first.</h1>
+      <p class="sub"><strong id="findCount">11</strong> protocols the snapshot's own rules flag
+      <strong>before they rank</strong> — small, young, growing or broad. Below them, all
+      <strong id="rankedCount">198</strong> protocols that record no token, each priced from the
+      <strong>128 that already trade</strong> — value if it launches, times its odds of ever launching.
+      Then: what <strong>your</strong> farm would pay.</p>
+      <div class="calc" id="calc">
+        <div class="calc-title">YOUR FARM, PRICED <span class="calc-live" id="calcLive"></span></div>
+        <div class="calc-row"><label>Deposit</label><div class="seg" id="segDeposit"></div></div>
+        <div class="calc-row"><label>Drop share</label><div class="seg" id="segShare"></div></div>
+        <div class="calc-row"><label>Hold</label><div class="seg" id="segHold"></div></div>
+        <div class="calc-out" id="calcOut"></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="panel chart-panel">
+        <div class="panel-title">THE SIZE CURVE, FITTED <a href="#/method" class="mini-link">how it is made →</a></div>
+        <svg id="scatter" viewBox="0 0 360 150" role="img" aria-label="Log-log scatter of TVL against market cap for the 128 comparables, with the fitted line"></svg>
+        <div class="formula" id="formula"></div>
+        <div class="ablation" id="ablation"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="integrity" id="integrity"></section>
+
+  <section class="finds" id="finds"></section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="evidence" id="evidence"></section>
+
+  <section class="universe">
+    <div class="uni-bar" id="uniBar"></div>
+    <div class="uni-legend" id="uniLegend"></div>
+    <div class="agree" id="agree"></div>
+  </section>
+
+  <section class="filters" id="filters">
+    <select id="fCat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="fChain" aria-label="Chain"><option value="">All chains</option></select>
+    <div class="seg small" id="fVerdict"></div>
+    <label class="chk"><input type="checkbox" id="fWatch"> Watchlist only</label>
+    <label class="chk"><input type="checkbox" id="fFinds"> Early finds only</label>
+    <input id="fSearch" type="search" placeholder="Search name, slug, category" aria-label="Search">
+    <select id="fSort" aria-label="Sort">
+      <option value="implied">Sort: implied value</option>
+      <option value="net">Sort: net at your farm</option>
+      <option value="tvl">Sort: TVL</option>
+      <option value="odds">Sort: launch odds</option>
+      <option value="age">Sort: longest no-token</option>
+    </select>
+    <button id="fReset" type="button">Reset</button>
+  </section>
+
+  <section id="boardView">
+    <div class="board-head"><span id="boardCount"></span><span class="board-note">Click a row for its detail view. Values are the board's own claim, never a forecast.</span></div>
+    <table class="board" id="board">
+      <colgroup><col class="c-rank"><col class="c-proto"><col class="c-tvl"><col class="c-val"><col class="c-odds"><col class="c-net"><col class="c-verdict"><col class="c-farm"></colgroup>
+      <thead><tr>
+        <th data-sort="rank">#</th><th data-sort="name">Protocol</th><th data-sort="tvl">TVL · 7D · No token for</th>
+        <th data-sort="implied">Implied value + band</th><th data-sort="odds">Launch odds</th>
+        <th data-sort="net">Net at your farm ▲</th><th data-sort="verdict">Verdict</th><th>Farm plan</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </section>
+
+  <section id="detailView" hidden></section>
+  <section id="methodView" hidden></section>
+
+  <footer class="foot">
+    <a href="#/board">Board</a> · <a href="#/method">Method — constants, ablation, odds table, early-finds rules</a> ·
+    <span id="footNote"></span>
+  </footer>
+</main>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
